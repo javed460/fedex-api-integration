@@ -6,4 +6,4 @@ https://developer.fedex.com/api/en-us/catalog.html
 
 # Local Server Details
 Runs at port 8080
-http://localhost:8080/fedex-example
+http://localhost:8080/my-app
