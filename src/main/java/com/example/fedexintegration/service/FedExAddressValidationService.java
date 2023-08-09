@@ -1,7 +1,6 @@
 package com.example.fedexintegration.service;
 
 import com.example.fedexintegration.domain.IncomingAddress;
-import com.example.fedexintegration.domain.ResolvedAddress;
 import com.example.fedexintegration.dto.addressvalidation.request.AddressValidationRequestDTO;
 import com.example.fedexintegration.dto.addressvalidation.response.AddressValidationResponseDTO;
 import com.example.fedexintegration.dto.addressvalidation.response.ResolvedAddressDTO;
@@ -30,7 +29,7 @@ public class FedExAddressValidationService {
     @Value("${fedex.url}")
     private String fedExUrl;
 
-    public ResolvedAddress validateAddress(IncomingAddress incomingAddress) {
+    public ResolvedAddressDTO validateAddress(IncomingAddress incomingAddress) {
         AddressValidationRequestDTO validationRequestDTO = transformToAddressValidationDTO(incomingAddress);
 
         String accessToken = fedExTokenService.getOAuth2AccessToken();
@@ -46,10 +45,9 @@ public class FedExAddressValidationService {
         try {
             ResponseEntity<AddressValidationResponseDTO> addressValidationResponseDTO =
                     restTemplate.postForEntity(fedExUrl + API_PATH, request, AddressValidationResponseDTO.class);
-            System.out.println(addressValidationResponseDTO.getBody().toString());
 
             ResolvedAddressDTO resolvedAddressDTO = addressValidationResponseDTO.getBody().getOutput().getResolvedAddresses().get(0);
-            return new ResolvedAddress();
+            return resolvedAddressDTO;
 
         } catch (Exception e) {
             log.error("Exception occurred while validating address", e);
