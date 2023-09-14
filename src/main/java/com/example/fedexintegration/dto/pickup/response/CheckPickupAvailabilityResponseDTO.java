@@ -2,11 +2,11 @@ package com.example.fedexintegration.dto.pickup.response;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
+import lombok.ToString;
 
 @Getter
 @Setter
-@Slf4j
+@ToString
 public class CheckPickupAvailabilityResponseDTO {
     private String transactionId;
     private String customerTransactionId;
