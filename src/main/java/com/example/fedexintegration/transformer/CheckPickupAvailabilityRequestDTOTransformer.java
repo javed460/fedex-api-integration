@@ -1,6 +1,7 @@
 package com.example.fedexintegration.transformer;
 
 
+import com.example.fedexintegration.domain.IncomingAddress;
 import com.example.fedexintegration.dto.DimensionsDTO;
 import com.example.fedexintegration.dto.WeightDTO;
 import com.example.fedexintegration.dto.pickup.request.CheckPickupAvailabilityRequestDTO;
@@ -11,7 +12,7 @@ import static java.util.Arrays.asList;
 
 public final class CheckPickupAvailabilityRequestDTOTransformer {
 
-    public static CheckPickupAvailabilityRequestDTO transformToCheckPickupRequestDTO() {
+    public static CheckPickupAvailabilityRequestDTO transformToCheckPickupRequestDTO(IncomingAddress incomingAddress) {
         CheckPickupAvailabilityRequestDTO requestDTO = new CheckPickupAvailabilityRequestDTO();
         requestDTO.setPickupAddress(buildPickupAddressDTO());
         requestDTO.setDispatchDate("2023-06-08");
