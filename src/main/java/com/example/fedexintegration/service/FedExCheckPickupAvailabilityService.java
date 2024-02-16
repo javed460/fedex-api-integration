@@ -45,8 +45,6 @@ public class FedExCheckPickupAvailabilityService {
             ResponseEntity<CheckPickupAvailabilityResponseDTO> responseDTO =
                     restTemplate.postForEntity(fedExUrl + API_PATH, request, CheckPickupAvailabilityResponseDTO.class);
             System.out.println(responseDTO.getBody().toString());
-
-
         } catch (Exception e) {
             log.error("Exception occurred while calling check pickup availability api", e);
         }
